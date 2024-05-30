@@ -1,35 +1,34 @@
-import React, { useState } from "react";
 import SidebarButton from "./SidebarButton";
+import { useSection } from "../../contexts/SectionContext";
 
 export default function Sidebar() {
-	const [selectedButton, setSelectedButton] = useState<number | null>(0);
+	const { setCurrentSection } = useSection();
 
-	const handleClick = (buttonIndex: number) => {
-		setSelectedButton(buttonIndex);
-		console.log("Button Clicked");
+	const handleSectionChange = (section: string) => {
+		setCurrentSection(section);
 	};
 
 	return (
 		<nav className="h-full w-20 outline outline-dark_gray flex flex-col justify-evenly">
 			<SidebarButton
-				onClick={() => handleClick(0)}
 				label=""
-				selected={selectedButton === 0}
+				onClick={() => handleSectionChange("home")}
+				tag="home"
 			/>
 			<SidebarButton
-				onClick={() => handleClick(1)}
 				label="󰿎"
-				selected={selectedButton === 1}
+				onClick={() => handleSectionChange("movies")}
+				tag="movies"
 			/>
 			<SidebarButton
-				onClick={() => handleClick(2)}
 				label="󰟴"
-				selected={selectedButton === 2}
+				onClick={() => handleSectionChange("tvShows")}
+				tag="tvShows"
 			/>
 			<SidebarButton
-				onClick={() => handleClick(3)}
 				label=""
-				selected={selectedButton === 3}
+				onClick={() => handleSectionChange("search")}
+				tag="search"
 			/>
 		</nav>
 	);

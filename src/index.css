@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: "Agave";
+	src: url(/fonts/AgaveNerdFont-Regular.ttf);
+	font-display: swap;
+}

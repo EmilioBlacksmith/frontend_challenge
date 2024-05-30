@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SidebarButton from "./SidebarButton";
 
-const Sidebar: React.FC = () => {
+export default function Sidebar() {
 	const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
 	const handleClick = (buttonIndex: number) => {
@@ -33,6 +33,4 @@ const Sidebar: React.FC = () => {
 			/>
 		</nav>
 	);
-};
-
-export default Sidebar;
+}

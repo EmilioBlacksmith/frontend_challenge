@@ -7,8 +7,8 @@ interface SidebarButtonProps {
 const SidebarButton = ({ onClick, label, selected }: SidebarButtonProps) => {
 	return (
 		<button
-			className={`w-full h-8 text-3xl ${
-				selected ? "text-main_color" : "text-white"
+			className={`w-full h-8 align-middle text-3xl -ml-1 ${
+				selected ? "text-main_color" : ""
 			}`}
 			onClick={onClick}
 		>

@@ -10,7 +10,7 @@ export default function Sidebar() {
 	};
 
 	return (
-		<nav className="h-full w-20 outline outline-1 outline-gray flex flex-col justify-evenly">
+		<nav className="h-full w-20 outline outline-dark_gray flex flex-col justify-evenly">
 			<SidebarButton
 				onClick={() => handleClick(0)}
 				label=""

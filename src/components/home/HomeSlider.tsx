@@ -5,6 +5,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
+import { Autoplay } from "swiper/modules";
+
 const backdropURL: string = "https://image.tmdb.org/t/p/original/";
 
 interface Movie {
@@ -59,7 +61,11 @@ const MoviesList = () => {
 				pagination={{ clickable: true }}
 				scrollbar={{ draggable: true }}
 				grabCursor={true}
-				autoplay={{ delay: 5000 }}
+				autoplay={{
+					delay: 5000,
+					disableOnInteraction: false,
+				}}
+				modules={[Autoplay]}
 				className="h-full"
 			>
 				{movies.map((movie) => (

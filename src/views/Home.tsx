@@ -1,9 +1,18 @@
 import { useSection } from "../contexts/SectionContext";
+import MoviesList from "../components/home/HomeSlider";
 
 const Home = () => {
 	const { currentSection } = useSection();
 
-	return <div>{currentSection === "home" && <h1>Welcome</h1>}</div>;
+	return (
+		<>
+			{currentSection === "home" && (
+				<div className="w-full h-full p-1 bg-dark_gray">
+					<MoviesList />
+				</div>
+			)}
+		</>
+	);
 };
 
 export default Home;

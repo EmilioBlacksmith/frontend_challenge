@@ -8,12 +8,14 @@ import Search from "./views/Search";
 function App() {
 	return (
 		<SectionProvider>
-			<main className="bg-black w-screen h-screen text-white flex">
+			<main className="bg-black h-screen text-white flex">
 				<Sidebar />
-				<Home />
-				<Movies />
-				<TVShows />
-				<Search />
+				<div className="w-full h-full flex-1 overflow-x-hidden ">
+					<Home />
+					<Movies />
+					<TVShows />
+					<Search />
+				</div>
 			</main>
 		</SectionProvider>
 	);

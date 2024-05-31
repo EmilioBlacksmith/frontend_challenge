@@ -70,13 +70,14 @@ const MoviesList = () => {
 			>
 				{movies.map((movie) => (
 					<SwiperSlide key={movie.id}>
-						<div
-							className="w-full h-full bg-cover bg-center"
-							style={{
-								backgroundImage: `url(${backdropURL + movie.backdrop_path})`,
-							}}
-						>
-							<div className="w-4/6 absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center text-white p-4">
+						<div className="w-full h-full bg-cover bg-center flex">
+							<div
+								className="w-2/3 h-full ml-auto bg-cover bg-center"
+								style={{
+									backgroundImage: `url(${backdropURL + movie.backdrop_path})`,
+								}}
+							></div>
+							<div className="w-5/6 absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center text-white p-4">
 								<h1 className="text-3xl font-bold w-1/3">{movie.title}</h1>
 								<p className="mt-2 text-center w-1/3">{movie.overview}</p>
 							</div>

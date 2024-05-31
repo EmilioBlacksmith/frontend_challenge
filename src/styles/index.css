@@ -7,3 +7,7 @@
 	src: url(/fonts/AgaveNerdFont-Regular.ttf);
 	font-display: swap;
 }
+
+.swiper-pagination {
+	display: none !important;
+}

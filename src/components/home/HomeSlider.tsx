@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import Paragraph from "../../utils/Paragraph";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
-import { Autoplay } from "swiper/modules";
 
 const backdropURL: string = "https://image.tmdb.org/t/p/original/";
 
@@ -58,14 +58,14 @@ const MoviesList = () => {
 		<div className="w-full h-96 bg-black">
 			<Swiper
 				slidesPerView={1}
-				pagination={{ clickable: true }}
 				scrollbar={{ draggable: true }}
 				grabCursor={true}
+				loop={true}
 				autoplay={{
 					delay: 5000,
 					disableOnInteraction: false,
 				}}
-				modules={[Autoplay]}
+				modules={[Autoplay, Pagination]}
 				className="h-full"
 			>
 				{movies.map((movie) => (
@@ -77,9 +77,12 @@ const MoviesList = () => {
 									backgroundImage: `url(${backdropURL + movie.backdrop_path})`,
 								}}
 							></div>
-							<div className="w-5/6 absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center text-white p-4">
+							<div className="w-full absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center text-white p-4">
 								<h1 className="text-3xl font-bold w-1/3">{movie.title}</h1>
-								<p className="mt-2 text-center w-1/3">{movie.overview}</p>
+								<Paragraph
+									text={movie.overview}
+									maxWords={40}
+								/>
 							</div>
 						</div>
 					</SwiperSlide>

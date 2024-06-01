@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Paragraph from "../../utils/Paragraph";
+import StarRating from "../../utils/StarRating";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -14,6 +15,9 @@ interface Movie {
 	title: string;
 	overview: string;
 	backdrop_path: string;
+	vote_average: number;
+	vote_count: number;
+	release_date: string;
 }
 
 const MoviesList = () => {
@@ -77,11 +81,18 @@ const MoviesList = () => {
 									backgroundImage: `url(${backdropURL + movie.backdrop_path})`,
 								}}
 							></div>
-							<div className="w-full absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center text-white p-4">
-								<h1 className="text-3xl font-bold w-1/3">{movie.title}</h1>
+							<div className="w-full absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center items-start pl-20 text-white p-4 gap-3">
+								<h1 className="text-5xl w-2/3">{movie.title}</h1>
+								<div className="flex gap-8 text-gray text-lg w-2/3">
+									<StarRating reviewCount={movie.vote_average} />
+									<p className="pt-1">•</p>
+									<p className="pt-1">{movie.vote_count} Reviews</p>
+									<p className="pt-1">•</p>
+									<p className="pt-1">{movie.release_date.split("-")[0]}</p>
+								</div>
 								<Paragraph
 									text={movie.overview}
-									maxWords={40}
+									maxWords={35}
 								/>
 							</div>
 						</div>

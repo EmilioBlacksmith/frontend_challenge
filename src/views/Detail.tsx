@@ -2,7 +2,7 @@ import { useSection } from "../contexts/SectionContext";
 import { useEffect, useState } from "react";
 
 const posterURL: string = "https://image.tmdb.org/t/p/w500/";
-const backdropURL: string = "https://image.tmdb.org/t/p/original/";
+const backdropURL: string = "https://image.tmdb.org/t/p/w500/";
 
 interface MediaData {
 	id: number;
@@ -51,18 +51,25 @@ const Detail = () => {
 			});
 	}, [selectedMediaId, selectedMediaType]);
 
-	if (loading) {
+	if (currentSection === "detail" && loading) {
 		return <div>Loading...</div>;
 	}
 
-	if (error) {
+	if (currentSection === "detail" && error) {
 		return <div>Error: {error.message}</div>;
 	}
 
 	return (
 		<>
 			{currentSection === "detail" && mediaData && (
-				<div className="w-full h-full p-1 bg-dark_gray">
+				<div className="w-full h-full p-1">
+					<div
+						className="w-full h-full bg-cover z-0 absolute top-0 left-0 blur"
+						style={{
+							backgroundImage: `url(${backdropURL + mediaData.backdrop_path})`,
+							opacity: 0.1,
+						}}
+					></div>
 					<div key={mediaData.id}>
 						<h1>This is the info for: {mediaData.title}</h1>
 						<p>{mediaData.overview}</p>

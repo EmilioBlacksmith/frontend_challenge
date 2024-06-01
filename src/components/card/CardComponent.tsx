@@ -34,7 +34,7 @@ function CardComponent({
 				}}
 			></div>
 			<div
-				className="w-full h-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
+				className="w-full h-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6 transition ease-in duration-75"
 				onClick={() => handleMovieClick(cardId, mediaType)}
 			>
 				<h3 className="text-2xl text-white font-extrabold text-center">

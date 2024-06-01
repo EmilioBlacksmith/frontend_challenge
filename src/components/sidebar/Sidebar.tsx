@@ -9,7 +9,7 @@ export default function Sidebar() {
 	};
 
 	return (
-		<nav className="h-full w-20 outline bg-black outline-dark_gray flex flex-col justify-evenly">
+		<nav className="h-full w-20 outline bg-black outline-dark_gray flex flex-col justify-evenly z-50">
 			<SidebarButton
 				label=""
 				onClick={() => handleSectionChange("home")}

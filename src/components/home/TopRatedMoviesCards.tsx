@@ -15,7 +15,7 @@ interface Movie {
 	vote_average: number;
 }
 
-const PopularMoviesNowCards = () => {
+const TopRatedMovieCards = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
@@ -31,7 +31,7 @@ const PopularMoviesNowCards = () => {
 		};
 
 		fetch(
-			"https://api.themoviedb.org/3/movie/popular?language=es-US&page=1",
+			"https://api.themoviedb.org/3/movie/top_rated?language=es-US&page=1",
 			options
 		)
 			.then((response) => response.json())
@@ -56,7 +56,7 @@ const PopularMoviesNowCards = () => {
 	return (
 		<nav className="w-full h-112 p-8">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Películas Populares</h2>
+				<h2 className="text-2xl">Las Películas Mejor Valoradas</h2>
 				<a
 					href="/"
 					className="text-main_color"
@@ -95,4 +95,4 @@ const PopularMoviesNowCards = () => {
 	);
 };
 
-export default PopularMoviesNowCards;
+export default TopRatedMovieCards;

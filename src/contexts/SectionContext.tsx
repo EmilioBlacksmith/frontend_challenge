@@ -7,8 +7,10 @@ interface SectionProviderProps {
 interface SectionContextProps {
 	currentSection: string;
 	setCurrentSection: React.Dispatch<React.SetStateAction<string>>;
-	selectedMovieId: number | null;
-	setSelectedMovieId: React.Dispatch<React.SetStateAction<number | null>>;
+	selectedMediaId: number | null;
+	setSelectedMediaId: React.Dispatch<React.SetStateAction<number | null>>;
+	selectedMediaType: string;
+	setSelectedMediaType: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SectionContext = createContext<SectionContextProps | undefined>(
@@ -17,15 +19,18 @@ const SectionContext = createContext<SectionContextProps | undefined>(
 
 const SectionProvider = ({ children }: SectionProviderProps) => {
 	const [currentSection, setCurrentSection] = useState<string>("home");
-	const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
+	const [selectedMediaId, setSelectedMediaId] = useState<number | null>(null);
+	const [selectedMediaType, setSelectedMediaType] = useState<string>("");
 
 	return (
 		<SectionContext.Provider
 			value={{
 				currentSection,
 				setCurrentSection,
-				selectedMovieId,
-				setSelectedMovieId,
+				selectedMediaId,
+				setSelectedMediaId,
+				selectedMediaType,
+				setSelectedMediaType,
 			}}
 		>
 			{children}

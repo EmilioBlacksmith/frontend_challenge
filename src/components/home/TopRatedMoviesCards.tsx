@@ -78,6 +78,7 @@ const TopRatedMovieCards = () => {
 							movieTitle={movie.title}
 							reviewCount={movie.vote_average}
 							cardId={movie.id}
+							mediaType="movie"
 						/>
 					</SwiperSlide>
 				))}

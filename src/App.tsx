@@ -8,7 +8,7 @@ import Search from "./views/Search";
 function App() {
 	return (
 		<SectionProvider>
-			<main className="bg-black h-screen text-white flex">
+			<main className="bg-dark_gray h-screen text-white flex">
 				<Sidebar />
 				<div className="w-full h-full flex-1 overflow-x-hidden ">
 					<Home />

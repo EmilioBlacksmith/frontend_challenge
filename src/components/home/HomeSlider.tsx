@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Paragraph from "../../utils/Paragraph";
 import StarRating from "../../utils/StarRating";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
@@ -74,7 +73,7 @@ const MoviesList = () => {
 			>
 				{movies.map((movie) => (
 					<SwiperSlide key={movie.id}>
-						<div className="w-full h-full bg-cover bg-center flex">
+						<div className="w-full h-full flex">
 							<div
 								className="w-2/3 h-full ml-auto bg-cover bg-center"
 								style={{

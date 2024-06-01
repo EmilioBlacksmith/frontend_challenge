@@ -1,4 +1,5 @@
 import StarRating from "../../utils/StarRating";
+import { useSection } from "../../contexts/SectionContext";
 
 interface CardData {
 	posterURL: string;
@@ -13,6 +14,12 @@ function CardComponent({
 	reviewCount,
 	movieId,
 }: CardData) {
+	const { setCurrentSection } = useSection();
+
+	const handleSectionChange = (section: string) => {
+		setCurrentSection(section);
+	};
+
 	return (
 		<>
 			<div
@@ -21,15 +28,15 @@ function CardComponent({
 					backgroundImage: `url(${posterURL})`,
 				}}
 			></div>
-			<a
+			<div
 				className="w-full h-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
-				href={"/" + movieId}
+				onClick={() => handleSectionChange("detail")}
 			>
 				<h3 className="text-2xl text-white font-extrabold text-center">
 					{movieTitle}
 				</h3>
 				<StarRating reviewCount={reviewCount} />
-			</a>
+			</div>
 		</>
 	);
 }

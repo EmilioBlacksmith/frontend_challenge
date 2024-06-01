@@ -4,6 +4,7 @@ import Home from "./views/Home";
 import Movies from "./views/Movies";
 import TVShows from "./views/TVShows";
 import Search from "./views/Search";
+import Detail from "./views/Detail";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Movies />
 					<TVShows />
 					<Search />
+					<Detail />
 				</div>
 			</main>
 		</SectionProvider>

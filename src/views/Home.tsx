@@ -1,6 +1,7 @@
 import { useSection } from "../contexts/SectionContext";
 import MoviesList from "../components/home/HomeSlider";
-import PopularNowCards from "../components/home/PopularNowCards";
+import PopularNowCards from "../components/home/PopularMoviesNowCards";
+import PopularTVShowsNowCards from "../components/home/PopularTVShowsNowCards";
 
 const Home = () => {
 	const { currentSection } = useSection();
@@ -11,6 +12,7 @@ const Home = () => {
 				<div className="w-full h-full p-1 bg-dark_gray">
 					<MoviesList />
 					<PopularNowCards />
+					<PopularTVShowsNowCards />
 				</div>
 			)}
 		</>

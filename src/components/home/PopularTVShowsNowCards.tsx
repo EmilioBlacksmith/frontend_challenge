@@ -8,15 +8,15 @@ import "swiper/css/scrollbar";
 
 const posterURL: string = "https://image.tmdb.org/t/p/w500/";
 
-interface Movie {
+interface TVShow {
 	id: number;
-	title: string;
+	original_name: string;
 	poster_path: string;
 	vote_average: number;
 }
 
-const PopularNowCards = () => {
-	const [movies, setMovies] = useState<Movie[]>([]);
+const PopularTVShowsNowCards = () => {
+	const [tvshows, setTVShows] = useState<TVShow[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
 
@@ -31,12 +31,12 @@ const PopularNowCards = () => {
 		};
 
 		fetch(
-			"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+			"https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
 			options
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setMovies(data.results);
+				setTVShows(data.results);
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -54,9 +54,9 @@ const PopularNowCards = () => {
 	}
 
 	return (
-		<nav className="w-full h-128 p-8">
+		<nav className="w-full h-112 p-8">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Películas Populares</h2>
+				<h2 className="text-2xl">Series Populares</h2>
 				<a
 					href="/"
 					className="text-main_color"
@@ -67,27 +67,26 @@ const PopularNowCards = () => {
 			<Swiper
 				spaceBetween={30}
 				slidesPerView={6}
-				pagination={{ clickable: true }}
 				scrollbar={{ draggable: true }}
 				mousewheel={{ forceToAxis: true }}
 				className="h-full"
 			>
-				{movies.map((movie) => (
-					<SwiperSlide key={movie.id}>
+				{tvshows.map((tvshow) => (
+					<SwiperSlide key={tvshow.id}>
 						<div
-							className="h-5/6 w-full bg-cover "
+							className="h-full w-full bg-cover border-gray border-2"
 							style={{
-								backgroundImage: `url(${posterURL + movie.poster_path})`,
+								backgroundImage: `url(${posterURL + tvshow.poster_path})`,
 							}}
 						></div>
 						<a
-							className="w-full h-5/6 bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
+							className="h-full w-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
 							href="/"
 						>
 							<h3 className="text-2xl text-white font-extrabold text-center">
-								{movie.title}
+								{tvshow.original_name}
 							</h3>
-							<StarRating reviewCount={movie.vote_average} />
+							<StarRating reviewCount={tvshow.vote_average} />
 						</a>
 					</SwiperSlide>
 				))}
@@ -96,4 +95,4 @@ const PopularNowCards = () => {
 	);
 };
 
-export default PopularNowCards;
+export default PopularTVShowsNowCards;

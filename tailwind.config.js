@@ -21,6 +21,7 @@ export default {
 		},
 		extend: {
 			height: {
+				112: "28rem",
 				128: "32rem",
 			},
 		},

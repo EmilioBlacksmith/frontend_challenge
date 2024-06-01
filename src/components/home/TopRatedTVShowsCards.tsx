@@ -15,7 +15,7 @@ interface TVShow {
 	vote_average: number;
 }
 
-const PopularTVShowsNowCards = () => {
+const TopRatedTVShowsCards = () => {
 	const [tvshows, setTVShows] = useState<TVShow[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
@@ -31,7 +31,7 @@ const PopularTVShowsNowCards = () => {
 		};
 
 		fetch(
-			"https://api.themoviedb.org/3/tv/popular?language=es-US&page=1",
+			"https://api.themoviedb.org/3/tv/top_rated?language=es-US&page=1",
 			options
 		)
 			.then((response) => response.json())
@@ -56,7 +56,7 @@ const PopularTVShowsNowCards = () => {
 	return (
 		<nav className="w-full h-112 p-8">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Series de TV Populares</h2>
+				<h2 className="text-2xl">Las Series de TV Mejor Valoradas</h2>
 				<a
 					href="/"
 					className="text-main_color"
@@ -95,4 +95,4 @@ const PopularTVShowsNowCards = () => {
 	);
 };
 
-export default PopularTVShowsNowCards;
+export default TopRatedTVShowsCards;

@@ -7,6 +7,8 @@ interface SectionProviderProps {
 interface SectionContextProps {
 	currentSection: string;
 	setCurrentSection: React.Dispatch<React.SetStateAction<string>>;
+	selectedMovieId: number | null;
+	setSelectedMovieId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const SectionContext = createContext<SectionContextProps | undefined>(
@@ -15,9 +17,17 @@ const SectionContext = createContext<SectionContextProps | undefined>(
 
 const SectionProvider = ({ children }: SectionProviderProps) => {
 	const [currentSection, setCurrentSection] = useState<string>("home");
+	const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
 
 	return (
-		<SectionContext.Provider value={{ currentSection, setCurrentSection }}>
+		<SectionContext.Provider
+			value={{
+				currentSection,
+				setCurrentSection,
+				selectedMovieId,
+				setSelectedMovieId,
+			}}
+		>
 			{children}
 		</SectionContext.Provider>
 	);

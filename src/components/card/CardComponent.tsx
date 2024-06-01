@@ -5,19 +5,20 @@ interface CardData {
 	posterURL: string;
 	movieTitle: string;
 	reviewCount: number;
-	movieId: number;
+	cardId: number;
 }
 
 function CardComponent({
 	posterURL,
 	movieTitle,
 	reviewCount,
-	movieId,
+	cardId,
 }: CardData) {
-	const { setCurrentSection } = useSection();
+	const { setCurrentSection, setSelectedMovieId } = useSection();
 
-	const handleSectionChange = (section: string) => {
-		setCurrentSection(section);
+	const handleMovieClick = (movieId: number) => {
+		setSelectedMovieId(movieId);
+		setCurrentSection("detail");
 	};
 
 	return (
@@ -30,7 +31,7 @@ function CardComponent({
 			></div>
 			<div
 				className="w-full h-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
-				onClick={() => handleSectionChange("detail")}
+				onClick={() => handleMovieClick(cardId)}
 			>
 				<h3 className="text-2xl text-white font-extrabold text-center">
 					{movieTitle}

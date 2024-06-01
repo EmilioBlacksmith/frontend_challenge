@@ -77,7 +77,7 @@ const TopRatedTVShowsCards = () => {
 							posterURL={posterURL + tvshow.poster_path}
 							movieTitle={tvshow.name}
 							reviewCount={tvshow.vote_average}
-							movieId={tvshow.id}
+							cardId={tvshow.id}
 						/>
 					</SwiperSlide>
 				))}

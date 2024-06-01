@@ -31,7 +31,7 @@ const PopularMoviesNowCards = () => {
 		};
 
 		fetch(
-			"https://api.themoviedb.org/3/movie/popular?language=es-US&page=1",
+			"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
 			options
 		)
 			.then((response) => response.json())
@@ -56,12 +56,12 @@ const PopularMoviesNowCards = () => {
 	return (
 		<nav className="w-full h-112 p-8">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Películas Populares</h2>
+				<h2 className="text-2xl">Recommended Movies</h2>
 				<a
 					href="/"
 					className="text-main_color"
 				>
-					Explorar más...
+					Explore more...
 				</a>
 			</div>
 			<Swiper

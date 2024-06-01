@@ -4,6 +4,7 @@ import PopularNowCards from "../components/home/PopularMoviesNowCards";
 import PopularTVShowsNowCards from "../components/home/PopularTVShowsNowCards";
 import TopRatedMovieCards from "../components/home/TopRatedMoviesCards";
 import TopRatedTVShowsCards from "../components/home/TopRatedTVShowsCards";
+import Footer from "../components/footer/footer";
 
 const Home = () => {
 	const { currentSection } = useSection();
@@ -17,6 +18,7 @@ const Home = () => {
 					<PopularTVShowsNowCards />
 					<TopRatedMovieCards />
 					<TopRatedTVShowsCards />
+					<Footer />
 				</div>
 			)}
 		</>

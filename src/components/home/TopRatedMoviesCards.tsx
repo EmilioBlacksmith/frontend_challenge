@@ -31,7 +31,7 @@ const TopRatedMovieCards = () => {
 		};
 
 		fetch(
-			"https://api.themoviedb.org/3/movie/top_rated?language=es-US&page=1",
+			"https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
 			options
 		)
 			.then((response) => response.json())
@@ -56,12 +56,12 @@ const TopRatedMovieCards = () => {
 	return (
 		<nav className="w-full h-112 p-8">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Las Películas Mejor Valoradas</h2>
+				<h2 className="text-2xl">Top Rated Movies</h2>
 				<a
 					href="/"
 					className="text-main_color"
 				>
-					Explorar más...
+					Explore more...
 				</a>
 			</div>
 			<Swiper

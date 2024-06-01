@@ -19,7 +19,11 @@ export default {
 		fontFamily: {
 			sans: ["Agave"],
 		},
-		extend: {},
+		extend: {
+			height: {
+				128: "32rem",
+			},
+		},
 	},
 	plugins: [],
 };

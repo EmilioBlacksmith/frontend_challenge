@@ -55,14 +55,14 @@ const MoviesList = () => {
 	}
 
 	return (
-		<div className="w-full h-96 bg-black">
+		<div className="w-full h-128 bg-black">
 			<Swiper
 				slidesPerView={1}
 				scrollbar={{ draggable: true }}
 				grabCursor={true}
 				loop={true}
 				autoplay={{
-					delay: 5000,
+					delay: 3000,
 					disableOnInteraction: false,
 				}}
 				modules={[Autoplay, Pagination]}

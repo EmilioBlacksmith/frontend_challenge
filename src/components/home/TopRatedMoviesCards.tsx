@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import StarRating from "../../utils/StarRating";
+import CardComponent from "../card/CardComponent";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -73,21 +73,12 @@ const TopRatedMovieCards = () => {
 			>
 				{movies.map((movie) => (
 					<SwiperSlide key={movie.id}>
-						<div
-							className="h-full w-full bg-cover border-gray border-2"
-							style={{
-								backgroundImage: `url(${posterURL + movie.poster_path})`,
-							}}
-						></div>
-						<a
-							className="w-full h-full bg-black backdrop-blur-xl opacity-0 absolute inset-0 hover:opacity-90 hover:cursor-pointer flex flex-col justify-center items-center p-6"
-							href="/"
-						>
-							<h3 className="text-2xl text-white font-extrabold text-center">
-								{movie.title}
-							</h3>
-							<StarRating reviewCount={movie.vote_average} />
-						</a>
+						<CardComponent
+							posterURL={posterURL + movie.poster_path}
+							movieTitle={movie.title}
+							reviewCount={movie.vote_average}
+							movieId={movie.id}
+						/>
 					</SwiperSlide>
 				))}
 			</Swiper>

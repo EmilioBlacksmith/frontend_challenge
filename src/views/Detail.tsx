@@ -8,6 +8,7 @@ const backdropURL: string = "https://image.tmdb.org/t/p/w500/";
 interface MediaData {
 	id: number;
 	title: string;
+	name: string;
 	poster_path: string;
 	vote_average: number;
 	release_date: string;
@@ -78,10 +79,12 @@ const Detail = () => {
 						key={mediaData.id}
 					>
 						<div className="flex w-1/3 h-full flex-col items-center justify-center p-4">
-							<h1 className="text-5xl text-center">{mediaData.title}</h1>
+							<h1 className="text-5xl text-center">
+								{mediaData.title || mediaData.name}
+							</h1>
 							<img
 								src={`${posterURL}${mediaData.poster_path}`}
-								alt={mediaData.title}
+								alt={mediaData.title || mediaData.name}
 							/>
 						</div>
 						<div className="flex w-2/3 h-full flex-col justify-center p-4 gap-4">

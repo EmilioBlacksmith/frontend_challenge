@@ -3,7 +3,7 @@ import { useSection } from "../../contexts/SectionContext";
 
 interface CardData {
 	posterURL: string;
-	movieTitle: string;
+	showTitle: string;
 	reviewCount: number;
 	cardId: number;
 	mediaType: string;
@@ -11,7 +11,7 @@ interface CardData {
 
 function CardComponent({
 	posterURL,
-	movieTitle,
+	showTitle: movieTitle,
 	reviewCount,
 	cardId,
 	mediaType,

@@ -75,7 +75,7 @@ const PopularTVShowsNowCards = () => {
 					<SwiperSlide key={tvshow.id}>
 						<CardComponent
 							posterURL={posterURL + tvshow.poster_path}
-							movieTitle={tvshow.name}
+							showTitle={tvshow.name}
 							reviewCount={tvshow.vote_average}
 							cardId={tvshow.id}
 							mediaType="tv"

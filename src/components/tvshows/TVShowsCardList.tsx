@@ -3,24 +3,24 @@ import CardComponent from "../card/CardComponent";
 
 const posterURL: string = "https://image.tmdb.org/t/p/w500/";
 
-interface Movie {
+interface Show {
 	id: number;
-	title: string;
+	name: string;
 	poster_path: string;
 	vote_average: number;
 }
 
-const MovieCardList = () => {
-	const [movies, setMovies] = useState<Movie[]>([]);
+const TvShowsCardList = () => {
+	const [shows, setTVShows] = useState<Show[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
 	const [page, setPage] = useState<number>(1);
 
-	const fetchMovies = async (pageNumber: number) => {
+	const fetchTVShows = async (pageNumber: number) => {
 		setLoading(true);
 		try {
 			const response = await fetch(
-				`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${pageNumber}`,
+				`https://api.themoviedb.org/3/tv/popular?language=en-US&page=${pageNumber}`,
 				{
 					method: "GET",
 					headers: {
@@ -33,15 +33,13 @@ const MovieCardList = () => {
 			if (!response.ok) {
 				throw new Error("Failed to fetch data");
 			}
-			const data: { results: Movie[] } = await response.json();
-			setMovies((prevMovies) => {
+			const data: { results: Show[] } = await response.json();
+			setTVShows((prevShow) => {
 				const uniqueMovies = data.results.filter(
-					(newMovie) =>
-						!prevMovies.some(
-							(existingMovie) => existingMovie.id === newMovie.id
-						)
+					(newShow) =>
+						!prevShow.some((existingShow) => existingShow.id === newShow.id)
 				);
-				return [...prevMovies, ...uniqueMovies];
+				return [...prevShow, ...uniqueMovies];
 			});
 			setLoading(false);
 		} catch (err) {
@@ -51,14 +49,14 @@ const MovieCardList = () => {
 	};
 
 	useEffect(() => {
-		fetchMovies(page);
+		fetchTVShows(page);
 	}, [page]);
 
 	const handleLoadMore = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	if (loading && movies.length === 0) {
+	if (loading && shows.length === 0) {
 		return <div>Loading...</div>;
 	}
 
@@ -69,21 +67,21 @@ const MovieCardList = () => {
 	return (
 		<nav className="w-full h-auto p-8 gap-6 flex flex-col">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Top Rated Movies</h2>
+				<h2 className="text-2xl">Recommended TV Shows</h2>
 			</div>
 			<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-				{movies.map((movie) => (
+				{shows.map((show) => (
 					<CardComponent
-						key={movie.id}
-						posterURL={posterURL + movie.poster_path}
-						showTitle={movie.title}
-						reviewCount={movie.vote_average}
-						cardId={movie.id}
-						mediaType="movie"
+						key={show.id}
+						posterURL={posterURL + show.poster_path}
+						showTitle={show.name}
+						reviewCount={show.vote_average}
+						cardId={show.id}
+						mediaType="tv"
 					/>
 				))}
 			</div>
-			{loading && <div>Loading more movies...</div>}
+			{loading && <div>Loading more shows...</div>}
 			<button
 				className="self-start w-64 h-12 rounded-md bg-main_color hover:scale-105 transition ease-in"
 				onClick={handleLoadMore}
@@ -94,4 +92,4 @@ const MovieCardList = () => {
 	);
 };
 
-export default MovieCardList;
+export default TvShowsCardList;

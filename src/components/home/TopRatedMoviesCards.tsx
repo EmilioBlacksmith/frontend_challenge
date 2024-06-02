@@ -77,7 +77,7 @@ const TopRatedMovieCards = () => {
 					<SwiperSlide key={movie.id}>
 						<CardComponent
 							posterURL={posterURL + movie.poster_path}
-							movieTitle={movie.title}
+							showTitle={movie.title}
 							reviewCount={movie.vote_average}
 							cardId={movie.id}
 							mediaType="movie"

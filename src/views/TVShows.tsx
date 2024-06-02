@@ -1,13 +1,10 @@
+import TvShowsCardList from "../components/tvshows/TVShowsCardList";
 import { useSection } from "../contexts/SectionContext";
 
 const TVShows = () => {
 	const { currentSection } = useSection();
 
-	return (
-		<div>
-			{currentSection === "tvShows" && <h1>Welcome to TV Shows Section</h1>}
-		</div>
-	);
+	return <div>{currentSection === "tvShows" && <TvShowsCardList />}</div>;
 };
 
 export default TVShows;

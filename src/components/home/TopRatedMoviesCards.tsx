@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { useSection } from "../../contexts/SectionContext";
 
 const posterURL: string = "https://image.tmdb.org/t/p/w500/";
 
@@ -16,6 +17,7 @@ interface Movie {
 }
 
 const TopRatedMovieCards = () => {
+	const { setCurrentSection } = useSection();
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
@@ -58,8 +60,8 @@ const TopRatedMovieCards = () => {
 			<div className="flex justify-between items-center">
 				<h2 className="text-2xl">Top Rated Movies</h2>
 				<a
-					href="/"
-					className="text-main_color"
+					onClick={() => setCurrentSection("movies")}
+					className="text-main_color hover:cursor-pointer"
 				>
 					Explore more...
 				</a>
@@ -75,7 +77,7 @@ const TopRatedMovieCards = () => {
 					<SwiperSlide key={movie.id}>
 						<CardComponent
 							posterURL={posterURL + movie.poster_path}
-							movieTitle={movie.title}
+							showTitle={movie.title}
 							reviewCount={movie.vote_average}
 							cardId={movie.id}
 							mediaType="movie"

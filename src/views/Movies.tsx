@@ -1,13 +1,10 @@
 import { useSection } from "../contexts/SectionContext";
+import MovieCardList from "../components/movies/MovieCardList";
 
 const Movies = () => {
 	const { currentSection } = useSection();
 
-	return (
-		<div>
-			{currentSection === "movies" && <h1>Welcome to Movies section</h1>}
-		</div>
-	);
+	return <>{currentSection === "movies" && <MovieCardList />}</>;
 };
 
 export default Movies;

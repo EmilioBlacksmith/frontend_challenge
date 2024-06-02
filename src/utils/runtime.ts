@@ -1,5 +1,7 @@
 export function runtime(runtimeAmount: number): string {
-	const hours = Math.floor(runtimeAmount / 60);
-	const minutes = runtimeAmount % 60;
-	return `${hours} hours and ${minutes} minutes`;
+	const sign = runtimeAmount < 0 ? "-" : "";
+	const absoluteAmount = Math.abs(runtimeAmount);
+	const hours = Math.floor(absoluteAmount / 60);
+	const minutes = absoluteAmount % 60;
+	return `${sign}${hours} hours and ${minutes} minutes`;
 }

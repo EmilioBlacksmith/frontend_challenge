@@ -1,3 +1,4 @@
+import ReviewsComponent from "../components/detail/ReviewsComponent";
 import { useSection } from "../contexts/SectionContext";
 import { useEffect, useState } from "react";
 
@@ -14,6 +15,8 @@ interface MediaData {
 	backdrop_path: string;
 	overview: string;
 	vote_count: number;
+	number_of_seasons: number;
+	first_air_date: string;
 }
 
 const Detail = () => {
@@ -70,13 +73,29 @@ const Detail = () => {
 							opacity: 0.1,
 						}}
 					></div>
-					<div key={mediaData.id}>
-						<h1>This is the info for: {mediaData.title}</h1>
-						<p>{mediaData.overview}</p>
-						<img
-							src={`${posterURL}${mediaData.poster_path}`}
-							alt={mediaData.title}
-						/>
+					<div
+						className="z-10 w-full h-full absolute top-0 left-0 pl-32 p-4 flex "
+						key={mediaData.id}
+					>
+						<div className="flex w-1/3 h-full flex-col items-center justify-center p-4">
+							<h1 className="text-5xl text-center">{mediaData.title}</h1>
+							<img
+								src={`${posterURL}${mediaData.poster_path}`}
+								alt={mediaData.title}
+							/>
+						</div>
+						<div className="flex w-2/3 h-full flex-col justify-center p-4 gap-4">
+							<ReviewsComponent
+								vote_average={mediaData.vote_average}
+								vote_count={mediaData.vote_count}
+								release_date={mediaData.release_date}
+								runtime={mediaData.runtime}
+								number_of_seasons={mediaData.number_of_seasons}
+								first_air_date={mediaData.first_air_date}
+							/>
+							<h2 className="text-xl font-black">OVERVIEW</h2>
+							{mediaData.overview}
+						</div>
 					</div>
 				</div>
 			)}

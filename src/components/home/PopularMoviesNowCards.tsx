@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import CardComponent from "../card/CardComponent";
+import { useSection } from "../../contexts/SectionContext";
 
 const posterURL: string = "https://image.tmdb.org/t/p/w500/";
 
@@ -16,6 +17,7 @@ interface Movie {
 }
 
 const PopularMoviesNowCards = () => {
+	const { setCurrentSection } = useSection();
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
@@ -58,8 +60,8 @@ const PopularMoviesNowCards = () => {
 			<div className="flex justify-between items-center">
 				<h2 className="text-2xl">Recommended Movies</h2>
 				<a
-					href="/"
-					className="text-main_color"
+					onClick={() => setCurrentSection("movies")}
+					className="text-main_color hover:cursor-pointer"
 				>
 					Explore more...
 				</a>

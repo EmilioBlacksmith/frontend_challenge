@@ -21,10 +21,19 @@ interface MediaData {
 }
 
 const Detail = () => {
-	const { currentSection, selectedMediaId, selectedMediaType } = useSection();
+	const {
+		currentSection,
+		selectedMediaId,
+		selectedMediaType,
+		setCurrentSection,
+	} = useSection();
 	const [mediaData, setMediaData] = useState<MediaData | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
+
+	const handleSectionChange = (section: string) => {
+		setCurrentSection(section);
+	};
 
 	useEffect(() => {
 		if (selectedMediaId === null) return;
@@ -98,6 +107,9 @@ const Detail = () => {
 							/>
 							<h2 className="text-xl font-black">OVERVIEW</h2>
 							{mediaData.overview}
+							<button className="self-start w-64 h-12 rounded-md bg-main_color hover:scale-105 transition ease-in" onClick={() => handleSectionChange("home")}>
+								BACK
+							</button>
 						</div>
 					</div>
 				</div>

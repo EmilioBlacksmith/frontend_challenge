@@ -69,7 +69,7 @@ const MovieCardList = () => {
 	return (
 		<nav className="w-full h-auto p-8 gap-6 flex flex-col">
 			<div className="flex justify-between items-center">
-				<h2 className="text-2xl">Top Rated Movies</h2>
+				<h2 className="text-2xl">Recommended Movies</h2>
 			</div>
 			<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 				{movies.map((movie) => (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardComponent from "../card/CardComponent";
+import { useSection } from "../../contexts/SectionContext";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -16,6 +17,7 @@ interface TVShow {
 }
 
 const TopRatedTVShowsCards = () => {
+	const { setCurrentSection } = useSection();
 	const [tvshows, setTVShows] = useState<TVShow[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
@@ -58,8 +60,8 @@ const TopRatedTVShowsCards = () => {
 			<div className="flex justify-between items-center">
 				<h2 className="text-2xl">Top Rated TV Shows</h2>
 				<a
-					href="/"
-					className="text-main_color"
+					onClick={() => setCurrentSection("tvShows")}
+					className="text-main_color hover:cursor-pointer"
 				>
 					Explore more...
 				</a>

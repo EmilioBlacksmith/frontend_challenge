@@ -92,7 +92,13 @@ const MoviesList = () => {
 									backgroundImage: `url(${backdropURL + movie.backdrop_path})`,
 								}}
 							></div>
-							<div className="w-full absolute inset-0 from-black bg-gradient-to-r via-black backdrop-filter flex flex-col justify-center items-start pl-20 text-white p-4 gap-3">
+							<div
+								className="w-full absolute inset-0 flex flex-col justify-center items-start pl-20 text-white p-4 gap-3"
+								style={{
+									background:
+										"linear-gradient(to right, black 30%, rgba(0,0,0,0)) 0%",
+								}}
+							>
 								<h1 className="text-5xl w-2/3">{movie.title}</h1>
 								<div className="flex gap-8 text-gray text-lg w-2/3">
 									<StarRating reviewCount={movie.vote_average} />

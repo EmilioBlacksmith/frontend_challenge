@@ -12,9 +12,9 @@ export default {
 			black: "#000000",
 			white: "#FFFFFF",
 			dark_gray: "#111111",
-			gray: "#7f7f7f",
-			light_gray: "#cccccc",
-			main_color: "#40c1ad",
+			gray: "#7F7F7F",
+			light_gray: "#CCCCCC",
+			main_color: "#40C1AD",
 		},
 		fontFamily: {
 			sans: ["Agave"],

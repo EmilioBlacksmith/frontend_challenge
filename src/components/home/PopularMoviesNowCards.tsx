@@ -77,7 +77,8 @@ const PopularMoviesNowCards = () => {
 							posterURL={posterURL + movie.poster_path}
 							movieTitle={movie.title}
 							reviewCount={movie.vote_average}
-							movieId={movie.id}
+							cardId={movie.id}
+							mediaType="movie"
 						/>
 					</SwiperSlide>
 				))}

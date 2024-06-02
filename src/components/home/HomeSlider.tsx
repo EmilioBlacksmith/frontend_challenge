@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { useSection } from "../../contexts/SectionContext";
 import Paragraph from "../../utils/Paragraph";
 import StarRating from "../../utils/StarRating";
 import "swiper/css";
@@ -20,9 +21,17 @@ interface Movie {
 }
 
 const MoviesList = () => {
+	const { setCurrentSection, setSelectedMediaId, setSelectedMediaType } =
+		useSection();
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<Error | null>(null);
+
+	const handleMovieClick = (movieId: number, mediaType: string) => {
+		setSelectedMediaId(movieId);
+		setCurrentSection("detail");
+		setSelectedMediaType(mediaType);
+	};
 
 	useEffect(() => {
 		const options = {
@@ -73,7 +82,10 @@ const MoviesList = () => {
 			>
 				{movies.map((movie) => (
 					<SwiperSlide key={movie.id}>
-						<div className="w-full h-full flex">
+						<a
+							className="w-full h-full flex"
+							onClick={() => handleMovieClick(movie.id, "movie")}
+						>
 							<div
 								className="w-2/3 h-full ml-auto bg-cover bg-center"
 								style={{
@@ -94,7 +106,7 @@ const MoviesList = () => {
 									maxWords={35}
 								/>
 							</div>
-						</div>
+						</a>
 					</SwiperSlide>
 				))}
 			</Swiper>
